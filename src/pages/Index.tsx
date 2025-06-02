@@ -1,14 +1,36 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React from 'react';
+import MainAppLayout from '../components/layout/MainAppLayout';
+import LoginForm from '../components/LoginPage/LoginForm';
 
-const Index = () => {
+/**
+ * LoginPage
+ * 
+ * This component represents the main login page of the application.
+ * It utilizes the `MainAppLayout` to provide a centered card structure
+ * and embeds the `LoginForm` component within this layout.
+ *
+ * The `MainAppLayout` handles the overall page styling (background, centering)
+ * and the card container (surface color, padding, shadow).
+ * The `LoginForm` contains all the interactive elements for user login,
+ * including input fields for username and password, a submit button,
+ * and a link for alternative actions like signing up.
+ *
+ * This page follows the component hierarchy defined in the project requirements:
+ * Page (LoginPage) -> Template (CenteredLoginForm, implemented by MainAppLayout) -> Organism (LoginForm).
+ */
+const LoginPage: React.FC = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <MainAppLayout>
+      {/* 
+        The LoginForm component is rendered as a child of MainAppLayout.
+        MainAppLayout's CardContent provides p-6 padding and a flex container.
+        LoginForm itself manages the layout of its internal elements (heading, inputs, button, footer)
+        using its own flex container with gap-4 spacing.
+        No 'title' prop is passed to MainAppLayout here, as LoginForm provides its own h1 title.
+      */}
+      <LoginForm />
+    </MainAppLayout>
   );
 };
 
-export default Index;
+export default LoginPage;
