@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 export default {
 	darkMode: ["class"],
@@ -52,22 +53,23 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				}
+        // PRD specific colors for direct utility class usage if needed
+        'prd': {
+          background: 'hsl(var(--prd-background))',
+          surface: 'hsl(var(--prd-surface))',
+          'primary-text': 'hsl(var(--prd-primary-text))',
+          'secondary-text': 'hsl(var(--prd-secondary-text))',
+          'accent-blue': 'hsl(var(--prd-accent-blue))',
+        }
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				lg: 'var(--radius)', /* 0.5rem from --radius, matches PRD rounded-lg */
+				md: 'calc(var(--radius) - 2px)', /* 0.375rem, matches PRD rounded-md for buttons */
+				sm: 'calc(var(--radius) - 4px)' /* 0.25rem */
 			},
+      fontFamily: {
+        sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
+      },
 			keyframes: {
 				'accordion-down': {
 					from: {
